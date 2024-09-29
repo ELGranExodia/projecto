@@ -7,9 +7,13 @@
     use App\Controllers\LoginController;
     use App\Controllers\DashboardController;
     use App\Controllers\ProveedorController;
+    use App\Controllers\MenuController;
+    use App\Controllers\DesayunosController;
 
     // Establecemos las rutas de nuestra aplicación
     Route::get('/', [LoginController::class, 'index']);
+    Route::get('menu', [MenuController::class, 'index']);
+    Route::get('desayunos', [DesayunosController::class, 'index']);
     Route::post('login/verify', [LoginController::class, 'verify']);
 
     Route::get('/dashboard', [DashboardController::class, 'index']);

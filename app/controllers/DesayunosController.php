@@ -2,9 +2,9 @@
 
     namespace App\Controllers;
 
-    class DashboardController extends Controller {
+    class DesayunosController extends Controller {
         public function index() {
-            return $this->view('dashboard');
+            return $this->view('desayunos');
             
         }
     }

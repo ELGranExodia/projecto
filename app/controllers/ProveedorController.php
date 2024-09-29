@@ -119,37 +119,41 @@ class ProveedorController extends Controller {
         $pdf->Output('I', 'informe.pdf');
     }
 
-    public function informetabla() {
-        $proveedores = $this->modelo->all();
-        $alumnos = $this->modelo2->all();
+    public function informetabla()
+{
+    // Usamos la función getEstudiantesConOT para obtener los datos
+    $estudiantesConOT = $this->modelo->getEstudiantesConOT();
+    
+    $pdf = new FPDF('L', 'mm', 'Legal');
+    $pdf->SetFont('Arial', 'B', 12);
+    $pdf->AddPage();
 
-        $pdf = new FPDF('L', 'mm', 'Legal');
-        $pdf->SetFont('Arial', 'B', 12);
-        $pdf->AddPage();
+    $ancho = $pdf->GetPageWidth() - 20;
+    $pdf->Image('vendor/resources/img/logoinframen.png', 10, 5, -770);
+    $pdf->Cell($ancho, 8, 'REGISTROS', 0, 0, 'C');
+    $pdf->SetFont('Arial', '', 8);
+    $pdf->Ln(14);
+    $pdf->Cell($ancho * 0.1, 5, 'numero de orden', 1, 0, 'C');
+    $pdf->Cell($ancho * 0.15, 5, utf8_decode('nombre completo'), 1, 0, 'C');
+    $pdf->Cell($ancho * 0.15, 5, utf8_decode('seccion'), 1, 0, 'C');
+    $pdf->Cell($ancho * 0.15, 5, 'bachillerato', 1, 0, 'C');
+    $pdf->Cell($ancho * 0.15, 5, utf8_decode('nie'), 1, 0, 'C');
+    $pdf->Cell($ancho * 0.1, 5, utf8_decode('año'), 1, 0, 'C');
+    $pdf->Cell($ancho * 0.1, 5, utf8_decode('estado'), 1, 0, 'C');
+    $pdf->Cell($ancho * 0.1, 5, utf8_decode('fecha'), 1, 1, 'C');
 
-        $ancho = $pdf->GetPageWidth() - 20;
-        $pdf->Image('../public/img/OIP.png', 10, 10, -770);
-        $pdf->Cell($ancho, 8, 'REGISTROS', 0, 0, 'C');
-        $pdf->SetFont('Arial', '', 8);
-        $pdf->Ln(14);
-        $pdf->Cell($ancho * 0.15, 5, 'numero de orden', 1, 0, 'C');
-        $pdf->Cell($ancho * 0.15, 5, utf8_decode('nombre completo'), 1, 0, 'C');
-        $pdf->Cell($ancho * 0.15, 5, utf8_decode('seccion'), 1, 0, 'C');
-        $pdf->Cell($ancho * 0.15, 5, 'bachillerato', 1, 0, 'C');
-        $pdf->Cell($ancho * 0.15, 5, utf8_decode('nie'), 1, 0, 'C');
-        $pdf->Cell($ancho * 0.1, 5, utf8_decode('año'), 1, 0, 'C');
-        $pdf->Cell($ancho * 0.1, 5, utf8_decode('estado'), 1, 0, 'C');
-        $pdf->Cell($ancho * 0.1, 5, utf8_decode('fecha'), 1, 1, 'C');
-
-        foreach ($proveedores as $proveedor) {
-            $pdf->Cell($ancho * 0.15, 5, utf8_decode($proveedor->numero_orden), 1, 0);
-            $pdf->Cell($ancho * 0.15, 5, utf8_decode($proveedor->nombre_completo), 1, 0);
-            $pdf->Cell($ancho * 0.15, 5, $proveedor->seccion, 1, 0);
-            $pdf->Cell($ancho * 0.15, 5, utf8_decode($proveedor->bachillerato), 1, 0);
-            $pdf->Cell($ancho * 0.15, 5, $proveedor->nie, 1, 0);
-            $pdf->Cell($ancho * 0.1, 5, $proveedor->ano, 1, 0);
-        }
-
-        $pdf->Output('I', 'proveedores.pdf');
+    // Iteramos sobre los estudiantes y añadimos los datos al PDF
+    foreach ($estudiantesConOT as $registro) {
+        $pdf->Cell($ancho * 0.1, 5, utf8_decode($registro->numero_orden), 1, 0);
+        $pdf->Cell($ancho * 0.15, 5, utf8_decode($registro->nombre_completo), 1, 0);
+        $pdf->Cell($ancho * 0.15, 5, $registro->seccion, 1, 0);
+        $pdf->Cell($ancho * 0.15, 5, utf8_decode($registro->bachillerato), 1, 0);
+        $pdf->Cell($ancho * 0.15, 5, $registro->nie, 1, 0);
+        $pdf->Cell($ancho * 0.1, 5, $registro->ano, 1, 0);
+        $pdf->Cell($ancho * 0.1, 5, $registro->estado, 1, 0);
+        $pdf->Cell($ancho * 0.1, 5, $registro->fecha, 1, 1);
     }
+
+    $pdf->Output('I', 'estudiantes_ot.pdf');
+}
 }

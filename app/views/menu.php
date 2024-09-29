@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagina Principal</title>
+  <title>Menu</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="vendor/resources/css/dashboard.css"> <!-- Asegúrate de tener enlazado tu archivo CSS -->
@@ -70,11 +70,14 @@
 
   <!-- Contenido Principal -->
   <div class="container-fluid" id="contenidod">
-    <div class="d-flex flex-column justify-content-center align-items-center text-center mt-5">
-      <h1>Registros de comedor</h1>
-      <img src="vendor/resources/img/logoinframen.png" alt="Imagen Principal" class="img-fluid my-4"
-        style="max-width: 200px;">
-      <p>Este es el sistema.</p>
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
     </div>
   </div>
 
