@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Sistema para la gestion de la entrega de comida.">
+    <meta name="author" content="David Ventura">
+    <link rel="icon" href="vendor/resources/img/logoinframen.ico" sizes="32x32">
     <title>Comedor</title>
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/resources/css/home.css">
 </head>
+
 <body class="vh-100 bg-secondary d-flex justify-content-center align-items-center">
     <div class="card px-4" style="max-width: 400px; width: 100%;">
         <div class="card-body">
@@ -38,4 +45,5 @@
     <script src="vendor/jquery/jquery.js"></script>
     <script src="vendor/resources/js/login.js"></script>
 </body>
+
 </html>

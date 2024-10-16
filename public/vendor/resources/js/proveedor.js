@@ -14,21 +14,19 @@ $(function () {
         iconSet: "fontAwesome",
         mtype: "POST",
         colModel: [ // Establece la estructura de la tabla dinamica
-            { label: 'NRC', name: 'nrc', index: 'nrc', width: 100 },
-            { label: 'NOMBRE DE LA EMPRESA', name: 'nombre_empresa', index: 'nombre_empresa', width: 300 },
-            { label: 'RAZÓN SOCIAL', name: 'razon_social', index: 'razon_social', width: 250 },
-            { label: 'CONTACTO', name: 'persona_contacto', index: 'persona_contacto', width: 250 },
-            { label: 'TELÉFONO', name: 'telefono_contacto', index: 'telefono_contacto', width: 120, align: "center" },
-            { label: 'CORREO ELECTRÓNICO', name: 'correo_electronico', index: 'correo_electronico', width: 400 }
+            { label: 'NIE', name: 'nie', index: 'nie', width: 100 },
+            { label: 'NOMBRE COMPLETO', name: 'nombre_completo', index: 'nombre_completo', width: 300 },
+            { label: 'SECCION', name: 'seccion', index: 'seccion', width: 250 },
+            { label: 'BACHILLERATO', name: 'bachillerato', index: 'bachillerato', width: 250 },
         ],
         shrinkToFit: false,
-        width: $('.container-fluid').width(),
+        width: $('.container').width(),
         height: $(window).height() * 0.65,
         rowNum: 100, // Establece el número de filas o registros que se veran en la tabla
         rownumbers: true,
         rowNumWidth: 35,
         pager: '#navproveedores', // Indica el div de la barra de navegacion
-        sortname: 'nombre_empresa', // Indica el nombre del campo por el que se ordenan los registros
+        sortname: 'nombre_completo', // Indica el nombre del campo por el que se ordenan los registros
         viewrecords: true,
         sortorder: "asc", // Indica el ordenamiento ascendente o descendente
         onSelectRow: function (rowid, status, e) {
@@ -40,7 +38,7 @@ $(function () {
     proveedores.navGrid('#navproveedores', { edit: false, add: false, del: false, view: true, search: false });
 
     // Validación del formulario
-    $('#formProveedor').formValidation({
+    $('#formEstudiante').formValidation({
         framework: 'bootstrap4',
         excluded: '[readonly=readonly]',
         icon: {
@@ -53,12 +51,12 @@ $(function () {
                 row: '.col-md-3',
                 validators: {
                     notEmpty: {
-                        message: 'NRC Obligatorio'
+                        message: 'NIE Obligatorio'
                     },
                     remote: {
                         url: 'proveedores/verificarNrc',
                         type: 'post',
-                        message: 'NRC ya existe'
+                        message: 'NIE ya existe'
                     }
                 }
             },
